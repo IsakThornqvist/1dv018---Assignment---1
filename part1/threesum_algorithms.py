@@ -3,7 +3,7 @@ list_for_test = [1, 19, 29, 11, 23, 10, 27, -3, -5, 19, -22, 28, -16, 9, -23]
 class ThreeSum:
     def __init__(self):
         self.list = list_for_test
-        print(self.list)
+        # print(self.list)
 
         
 
@@ -23,8 +23,8 @@ class ThreeSum:
         return result
 
 
-three_sum = ThreeSum()
-result = three_sum.threesum_brute(list_for_test)
-print(result)
+# three_sum = ThreeSum()
+# result = three_sum.threesum_brute(list_for_test)
+# print(result)
 
 
