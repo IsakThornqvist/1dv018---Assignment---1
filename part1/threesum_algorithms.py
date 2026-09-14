@@ -15,7 +15,10 @@ class ThreeSum:
             for j in range(i + 1, len(lst)):
                 for k in range(j + 1, len(lst)):
                     if lst[i] + lst[j] + lst[k] == sum:
-                        result.append([lst[i], lst[j], lst[k]])
+                        triple = (lst[i], lst[j], lst[k])
+
+                        if triple not in result:
+                            result.append(triple)
 
         return result
 
