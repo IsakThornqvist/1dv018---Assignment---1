@@ -7,21 +7,21 @@ class ThreeSum:
 
         
 
-    def threesum_brute(self):
+    def threesum_brute(self, lst, sum=0):
         result = []
-        self.list.sort()
+        lst.sort()
 
-        for i in range(0, len(self.list)-2):
-            for j in range(i + 1, len(self.list)):
-                for k in range(j + 1, len(self.list)):
-                    if sum([self.list[i], self.list[j], self.list[k]]) == 0:
-                        result.append([self.list[i], self.list[j], self.list[k]])
+        for i in range(0, len(lst)-2):
+            for j in range(i + 1, len(lst)):
+                for k in range(j + 1, len(lst)):
+                    if lst[i] + lst[j] + lst[k] == sum:
+                        result.append([lst[i], lst[j], lst[k]])
 
         return result
 
 
 three_sum = ThreeSum()
-result = three_sum.threesum_brute()
+result = three_sum.threesum_brute(list_for_test)
 print(result)
 
 
