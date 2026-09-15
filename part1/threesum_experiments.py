@@ -2,6 +2,7 @@ import random
 import time
 from threesum_algorithms import ThreeSum
 
+three_sum = ThreeSum()
 
 def generate_random_list(n):
     result = []
@@ -12,7 +13,12 @@ def generate_random_list(n):
 
     return result
 
-three_sum = ThreeSum()
+
+def time_measure(algorithm, test_list):
+       start = time.perf_counter()
+       algorithm(test_list)
+       return time.perf_counter() - start
+
 
 sizes = [500, 800]
 
@@ -20,13 +26,8 @@ print("--- Time test ---")
 for n in sizes:
     test_list = generate_random_list(n)
 
-    start = time.perf_counter()
-    three_sum.threesum_brute(test_list)
-    brute_time = time.perf_counter() - start
-
-    start = time.perf_counter()
-    three_sum.threesum_pointer(test_list)
-    pointer_time = time.perf_counter() - start
+    brute_time = time_measure(three_sum.threesum_brute, test_list)
+    pointer_time = time_measure(three_sum.threesum_pointer, test_list)
 
     print("List Size =", n)
     print("Brute Time:", brute_time, "Seconds")
