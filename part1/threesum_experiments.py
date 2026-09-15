@@ -16,14 +16,23 @@ three_sum = ThreeSum()
 
 sizes = [100, 200, 300, 400, 500]
 
+print("--- Time test ---")
 for n in sizes:
     test_list = generate_random_list(n)
 
     start = time.perf_counter()
     three_sum.threesum_brute(test_list)
-    end = time.perf_counter()
+    brute_time = time.perf_counter() - start
 
-    print(n, end - start)
+    start = time.perf_counter()
+    three_sum.threesum_pointer(test_list)
+    pointer_time = time.perf_counter() - start
+
+    print("List Size =", n)
+    print("Brute Time:", brute_time, "Seconds")
+    print("Pointer Time:", pointer_time, "Seconds")
+    print()
+
 
 first_list = generate_random_list(15)
 second_list = generate_random_list(15)
@@ -37,6 +46,7 @@ result_one_pointer = three_sum.threesum_pointer(first_list)
 result_two_pointer = three_sum.threesum_pointer(second_list)
 result_three_pointer = three_sum.threesum_pointer(third_list)
 
+print("--- Correctness test ---")
 
 print("List 1")
 print(first_list)
