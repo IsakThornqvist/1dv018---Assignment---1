@@ -1,5 +1,6 @@
 import random
 import time
+import matplotlib.pyplot as graph
 from threesum_algorithms import ThreeSum
 
 three_sum = ThreeSum()
@@ -23,16 +24,40 @@ def time_measure(algorithm, test_list):
 list_sizes = [220, 240, 280, 300, 320, 340, 360, 380, 400, 420, 460, 500, 540, 600, 800]
 
 print("--- Time test ---")
+
+brute_times = []
+
 for n in list_sizes:
     test_list = generate_random_list(n)
 
     brute_time = time_measure(three_sum.threesum_brute, test_list)
+
+    brute_times.append(brute_time)
+
+
     pointer_time = time_measure(three_sum.threesum_pointer, test_list)
 
     print("List Size =", n)
     print("Brute Time:", brute_time, "Seconds")
     print("Pointer Time:", pointer_time, "Seconds")
     print()
+
+print(brute_times)
+
+graph.plot(list_sizes, brute_times)
+
+graph.xlabel("Input size")
+graph.ylabel("Time (seconds)")
+graph.title("Three_sum brute force")
+
+graph.show()
+
+
+
+
+
+
+
 
 
 first_list = generate_random_list(15)
