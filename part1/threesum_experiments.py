@@ -14,7 +14,7 @@ def generate_random_list(n):
 
 three_sum = ThreeSum()
 
-sizes = [100, 200, 300, 400, 500]
+sizes = [500, 800]
 
 print("--- Time test ---")
 for n in sizes:
@@ -49,17 +49,17 @@ result_three_pointer = three_sum.threesum_pointer(third_list)
 print("--- Correctness test ---")
 
 print("List 1")
-print(first_list)
+print("List to run algorithms on", first_list)
 print("Brute", result_one_brute)
 print("Pointer", result_one_pointer)
 
 print("List 2")
-print(second_list)
+print("List to run algorithms on", second_list)
 print("Brute", result_two_brute)
 print("Pointer", result_two_pointer)
 
 print("List 3")
-print(third_list)
+print("List to run algorithms on", third_list)
 print("Brute", result_three_brute)
 print("Pointer", result_three_pointer)
 
