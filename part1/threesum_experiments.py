@@ -15,15 +15,15 @@ def generate_random_list(n):
 
 
 def time_measure(algorithm, test_list):
-       start = time.perf_counter()
-       algorithm(test_list)
-       return time.perf_counter() - start
+    start = time.perf_counter()
+    algorithm(test_list)
+    return time.perf_counter() - start
 
 
-sizes = [500, 800]
+list_sizes = [220, 240, 280, 300, 320, 340, 360, 380, 400, 420, 460, 500, 540, 600, 800]
 
 print("--- Time test ---")
-for n in sizes:
+for n in list_sizes:
     test_list = generate_random_list(n)
 
     brute_time = time_measure(three_sum.threesum_brute, test_list)
