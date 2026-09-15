@@ -1,4 +1,5 @@
 import random
+import time
 from threesum_algorithms import ThreeSum
 
 
@@ -12,6 +13,18 @@ def generate_random_list(n):
     return result
 
 three_sum = ThreeSum()
+
+sizes = [100, 200, 300, 400, 500]
+
+for n in sizes:
+    test_list = generate_random_list(n)
+
+    start = time.perf_counter()
+    three_sum.threesum_brute(test_list)
+    end = time.perf_counter()
+
+    print(n, end - start)
+
 first_list = generate_random_list(15)
 second_list = generate_random_list(15)
 third_list = generate_random_list(15)
