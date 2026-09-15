@@ -15,6 +15,7 @@ three_sum = ThreeSum()
 first_list = generate_random_list(15)
 second_list = generate_random_list(15)
 third_list = generate_random_list(15)
+
 result_one = three_sum.threesum_brute(first_list)
 result_two = three_sum.threesum_brute(second_list)
 result_three = three_sum.threesum_brute(third_list)
@@ -23,13 +24,25 @@ result_one_pointer = three_sum.threesum_pointer(first_list)
 result_two_pointer = three_sum.threesum_pointer(second_list)
 result_three_pointer = three_sum.threesum_pointer(third_list)
 
-print(third_list)
-print(result_one)
+
+print("List 1")
+print(first_list)
+print("Brute", result_one)
+print("Pointer", result_one_pointer)
+
+print("List 2")
 print(second_list)
-print(result_two)
+print("Brute", result_two)
+print("Pointer", result_two_pointer)
+
+print("List 3")
 print(third_list)
-print(result_three)
-print(result_one_pointer)
-print(result_two_pointer)
-print(result_three_pointer)
+print("Brute", result_three)
+print("Pointer", result_three_pointer)
+
+
+
+
+
+
 
