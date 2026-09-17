@@ -6,13 +6,13 @@ from threesum_algorithms import ThreeSum
 three_sum = ThreeSum()
 
 def generate_random_list(n):
-    result = []
+    random_list = []
 
 
     for i in range(n):
-        result.append(random.randint(-10 * n, 10* n))
+        random_list.append(random.randint(-10 * n, 10* n))
 
-    return result
+    return random_list
 
 
 def time_measure(algorithm, test_list):
