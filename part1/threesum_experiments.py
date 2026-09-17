@@ -22,52 +22,35 @@ def time_measure(algorithm, test_list):
 
 
 def run_experiment(algorithm):
-    times = []
+    run_times = []
 
     for n in list_sizes:
         test_list = generate_random_list(n)
         time_run_takes = time_measure(algorithm, test_list)
-        times.append(time_run_takes)
+        run_times.append(time_run_takes)
 
+    return run_times
 
 
 list_sizes = [220, 240, 280, 300, 320, 340, 360, 380, 400, 420, 460, 500, 540, 600, 800]
 
 print("--- Time test ---")
 
-brute_times = []
+brute_times_first_run = run_experiment(three_sum.threesum_brute)
+brute_times_second_run = run_experiment(three_sum.threesum_brute)
+brute_times_third_run = run_experiment(three_sum.threesum_brute)
 
-for n in list_sizes:
-    test_list = generate_random_list(n)
+graph.plot(list_sizes, brute_times_first_run, label="Run 1")
+graph.plot(list_sizes, brute_times_second_run, label="Run 2")
+graph.plot(list_sizes, brute_times_third_run, label="Run 3")
 
-    brute_time = time_measure(three_sum.threesum_brute, test_list)
-
-    brute_times.append(brute_time)
-
-
-    pointer_time = time_measure(three_sum.threesum_pointer, test_list)
-
-    print("List Size =", n)
-    print("Brute Time:", brute_time, "Seconds")
-    print("Pointer Time:", pointer_time, "Seconds")
-    print()
-
-print(brute_times)
-
-graph.plot(list_sizes, brute_times)
 
 graph.xlabel("Input size")
 graph.ylabel("Time (seconds)")
 graph.title("Three_sum brute force")
+graph.legend()
 
 graph.show()
-
-
-
-
-
-
-
 
 
 first_list = generate_random_list(15)
