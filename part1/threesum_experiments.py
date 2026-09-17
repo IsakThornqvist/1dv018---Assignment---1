@@ -21,6 +21,16 @@ def time_measure(algorithm, test_list):
     return time.perf_counter() - start
 
 
+def run_experiment(algorithm):
+    times = []
+
+    for n in list_sizes:
+        test_list = generate_random_list(n)
+        time_run_takes = time_measure(algorithm, test_list)
+        times.append(time_run_takes)
+
+
+
 list_sizes = [220, 240, 280, 300, 320, 340, 360, 380, 400, 420, 460, 500, 540, 600, 800]
 
 print("--- Time test ---")
