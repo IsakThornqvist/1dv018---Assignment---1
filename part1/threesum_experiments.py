@@ -1,5 +1,6 @@
 import random
 import time
+import math
 import matplotlib.pyplot as graph
 from threesum_algorithms import ThreeSum
 
@@ -158,5 +159,38 @@ def lin_reg(x, y):
 
 m, k = lin_reg(list_sizes, average_times_all_runs)
 
-print("m: (akärningspunkts)", m)
+print("m: (skärningspunkt)", m)
 print("k: (lutning)", k)
+
+def calculate_logarithms(numbers):
+    result = []
+    for i in range(0, len(numbers)):
+        result.append(math.log(numbers[i]))
+
+    return result
+
+
+def calculate_regression_line(x, m, k):
+    regression_y = []
+    for i in range(0, len(x)):
+        regression_y.append(m + k *x[i])
+
+    return regression_y
+
+
+log_x = calculate_logarithms(list_sizes)
+log_y = calculate_logarithms(average_times_all_runs)
+
+m, k = lin_reg(log_x, log_y)
+print("k, log", k)
+
+regression_y = calculate_regression_line(log_x, m, k)
+
+graph.scatter(log_x, log_y)
+graph.plot(log_x, regression_y)
+graph.xlabel("log_x")
+graph.ylabel("log_y)")
+graph.title("xxxxxx")
+
+graph.show()
+
