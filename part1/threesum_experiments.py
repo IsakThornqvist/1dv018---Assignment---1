@@ -39,6 +39,41 @@ print("--- Time test ---")
 brute_times_first_run = run_experiment(three_sum.threesum_brute)
 brute_times_second_run = run_experiment(three_sum.threesum_brute)
 brute_times_third_run = run_experiment(three_sum.threesum_brute)
+print("Test for print", brute_times_first_run)
+
+
+def calculate_average_time(run_one, run_two, run_three):
+    average_times = []
+    for i in range(0, len(list_sizes)):
+        average_times.append(
+            (run_one[i] + run_two[i] + run_three[i]) / 3)
+
+    return average_times
+
+
+average_times_all_runs = calculate_average_time(
+    brute_times_first_run,
+    brute_times_second_run,
+    brute_times_third_run
+
+)
+
+print(average_times_all_runs)
+
+
+
+
+graph.plot(list_sizes, average_times_all_runs, label="Average time")
+
+
+graph.xlabel("Input size")
+graph.ylabel("Time (seconds)")
+graph.title("Three_sum brute force")
+graph.legend()
+
+graph.show()
+
+
 
 graph.plot(list_sizes, brute_times_first_run, label="Run 1")
 graph.plot(list_sizes, brute_times_second_run, label="Run 2")
