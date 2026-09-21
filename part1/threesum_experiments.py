@@ -118,12 +118,12 @@ print("Brute", result_three_brute)
 print("Pointer", result_three_pointer)
 
 
-# x input size -- -- - - -list sizes
-# y time - - --- -- - - average_times_all_runs
+# x input size -- -- - - -list_sizes
+# y time - - --- -- - - average_times_all_runs     execusion time
 # n = antal datapunkter
 
 def lin_reg(x, y):
-    n = len(x)
+    input_length = len(x)
     sum_of_all_values_in_x = sum(x)
     sum_of_all_values_in_y = sum(y)
 
@@ -136,3 +136,27 @@ def lin_reg(x, y):
 
     for i in range(0, len(y)):
         total_of_x_times_y += x[i] * y[i]
+
+    numerator = (
+        input_length * total_of_x_times_y
+        - sum_of_all_values_in_x * sum_of_all_values_in_y
+    )
+
+    denominator = (
+        input_length * times_itself
+        - sum_of_all_values_in_x * sum_of_all_values_in_x
+    )
+
+    k = numerator / denominator
+
+    average_of_x = sum_of_all_values_in_x / input_length
+    average_of_y = sum_of_all_values_in_y / input_length
+
+    m = average_of_y - k * average_of_x
+
+    return m, k
+
+m, k = lin_reg(list_sizes, average_times_all_runs)
+
+print("m: (lutning)", m)
+print("k: (skärningspunkt)", k)
