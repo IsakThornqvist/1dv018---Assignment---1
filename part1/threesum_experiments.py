@@ -158,5 +158,5 @@ def lin_reg(x, y):
 
 m, k = lin_reg(list_sizes, average_times_all_runs)
 
-print("m: (lutning)", m)
-print("k: (skärningspunkt)", k)
+print("m: (akärningspunkts)", m)
+print("k: (lutning)", k)
