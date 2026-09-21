@@ -118,8 +118,21 @@ print("Brute", result_three_brute)
 print("Pointer", result_three_pointer)
 
 
+# x input size -- -- - - -list sizes
+# y time - - --- -- - - average_times_all_runs
+# n = antal datapunkter
 
+def lin_reg(x, y):
+    n = len(x)
+    sum_of_all_values_in_x = sum(x)
+    sum_of_all_values_in_y = sum(y)
 
+    times_itself = 0
 
+    for i in range(0, len(x)):
+        times_itself += x[i] * x[i]
 
+    total_of_x_times_y = 0
 
+    for i in range(0, len(y)):
+        total_of_x_times_y += x[i] * y[i]
