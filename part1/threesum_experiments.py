@@ -186,11 +186,14 @@ print("k, log", k)
 
 regression_y = calculate_regression_line(log_x, m, k)
 
-graph.scatter(log_x, log_y)
-graph.plot(log_x, regression_y)
-graph.xlabel("log_x")
-graph.ylabel("log_y)")
-graph.title("xxxxxx")
+graph.scatter(log_x, log_y, label="Measured data")
+graph.plot(log_x, regression_y, label="Regression line")
+graph.xlabel("log(Input size)")
+graph.ylabel("log(Execution time)")
+graph.title("Log-log plot of three sum with brute force")
+
+graph.legend()
+graph.grid()
 
 graph.show()
 
