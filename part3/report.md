@@ -26,6 +26,20 @@ Finally I calculated the values for the regression line using the m and k values
 ### 2. Explain how you conducted your sorting experiments.
 
 ### 3. Explain your results and comparisons.
+The experiments were great to do because they showed a clear diffrence between brute force and pointer algorithm implementaqtions. As the input size got bigger, the execusion time of the brute force algorithm got really slow while the pointer algorithm was able to handle the bigger sizes much faster and smoother.
+
+
+## Figure 1 - Three seperate runs for brute force and pointer threesum algorithms
+
+ ![Figure 1](../graphs/Figure1.png)
+
+Figure one shows six runs in total, three for brute force and three for pointer. Represented by lines in the graph. The three runs for each algorithm follow a similar pattern, altgough there may be some very small diffrences in execution between runs. The diffrences are expected because of the simple fact thay execution time can be affected by other processen running on the computer etc.
+
+The main diffrence you can see ehen looking at figure 1 is that the brute force algorithm becomes much slower as the input size increases while the pointernalgorithm remains fast even at big input sizes. At an input size of 800 the brute force algorithm took around 5.4 secibds while the pointer algorithm took around 0.0295 seconds which is a significant diffrence.
+
+This proves that the pointer algorithm handles increasing input sized much more eddiciently than the bruteforce algorithm.
+
+
 ### 4. Show how you mathematically arrived at your results.
 ### 5. Explain (in an appropriate manner) how your choice of cache or pointer works.
 
