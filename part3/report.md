@@ -50,6 +50,15 @@ The graph yet again shows that the brute force algorithm got some issues with it
 
 The main reason for this diffrence is that the brute force algorithms has to check all diffrent combinations while the pointer algorithm uses a sorted list and two pointers to basically ignore certain combinations that are impossible to be a combination we are looking for.
 
+## Figure 2b - Log-log regression
+
+ ![Figure 2b](../graphs/Figure2b.png)
+
+Figure 2b shows the measured execution times after applying a natrual logarithm to the input size and execution time. After that I applied a linear regression to the logarithmic data.
+
+Th slope (k) can be used to estimate the time complexity, the brute force algortihm got a measured value of k = 3.1023 meanwhile the pointer algorithm got a measured value of k = 2.0913. This is the sort of data I was looking for since the brute force algorithm was close to three which corresponds to the time complexity of o(n³). The pointer value on the other hand is close to two which correpsonds to a quadratic time complexity of O(n²).
+
+The results gotten from the experiments therefor supports and agrees with the theoretical time complexitiers of both brute and piinter algorithms. The result also helps us understand why the execution times between the algorithms are so different in both Figure 1 and Figure 1a. So to sum it up, when the input size increases the brute force algorithm becomes much slower while the pointer algorithm keeps most of its speed.
 
 ### 4. Show how you mathematically arrived at your results.
 ### 5. Explain (in an appropriate manner) how your choice of cache or pointer works.
