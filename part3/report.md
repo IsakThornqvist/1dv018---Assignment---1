@@ -35,9 +35,20 @@ The experiments were great to do because they showed a clear diffrence between b
 
 Figure one shows six runs in total, three for brute force and three for pointer. Represented by lines in the graph. The three runs for each algorithm follow a similar pattern, altgough there may be some very small diffrences in execution between runs. The diffrences are expected because of the simple fact thay execution time can be affected by other processen running on the computer etc.
 
-The main diffrence you can see ehen looking at figure 1 is that the brute force algorithm becomes much slower as the input size increases while the pointernalgorithm remains fast even at big input sizes. At an input size of 800 the brute force algorithm took around 5.4 secibds while the pointer algorithm took around 0.0295 seconds which is a significant diffrence.
+The main difference you can see ehen looking at figure 1 is that the brute force algorithm becomes much slower as the input size increases while the pointernalgorithm remains fast even at big input sizes. At an input size of 800 the brute force algorithm took around 5.4 secibds while the pointer algorithm took around 0.0295 seconds which is a significant difference.
 
 This proves that the pointer algorithm handles increasing input sized much more eddiciently than the bruteforce algorithm.
+
+
+## Figure 1a - Average execution time
+
+ ![Figure 1a](../graphs/Figure1a.png)
+
+Figure 1a shows the average execution time of the three runs for each of the input sizes. Calculating the average makes the comparision really clear because small variations between diffrent runs gave less influence on the avtual result.
+
+The graph yet again shows that the brute force algorithm got some issues with it, the brute force algorithm increases much more rapidily un execusion time compared to the execution time of the pointer algorithm. The difference yet again becomes even clearer the bigger the input size is.
+
+The main reason for this diffrence is that the brute force algorithms has to check all diffrent combinations while the pointer algorithm uses a sorted list and two pointers to basically ignore certain combinations that are impossible to be a combination we are looking for.
 
 
 ### 4. Show how you mathematically arrived at your results.
