@@ -171,7 +171,7 @@ def lin_reg(x, y):
 
     return m, k
 
-m, k = lin_reg(list_sizes, average_times_all_runs)
+m, k = lin_reg(list_sizes, average_times_all_brute_runs)
 
 print("m: (skärningspunkt)", m)
 print("k: (lutning)", k)
@@ -193,18 +193,29 @@ def calculate_regression_line(x, m, k):
 
 
 log_x = calculate_logarithms(list_sizes)
-log_y = calculate_logarithms(average_times_all_runs)
+log_y_brute = calculate_logarithms(average_times_all_brute_runs)
 
-m, k = lin_reg(log_x, log_y)
-print("k, log", k)
+m_brute, k_brute = lin_reg(log_x, log_y_brute)
+print("brute force k, log", k_brute)
 
-regression_y = calculate_regression_line(log_x, m, k)
+regression_y_brute = calculate_regression_line(log_x, m_brute, k_brute)
 
-graph.scatter(log_x, log_y, label="Measured data")
-graph.plot(log_x, regression_y, label="Regression line")
+log_y_pointer = calculate_logarithms(average_times_all_pointer_runs)
+
+m_pointer, k_pointer = lin_reg(log_x, log_y_pointer)
+print("pointer k, log", k_pointer)
+
+regression_y_pointer = calculate_regression_line(log_x, m_pointer, k_pointer)
+
+
+
+graph.scatter(log_x, log_y_brute, label="Measured data (brute)")
+graph.plot(log_x, regression_y_brute, label="Regression line (brute)")
+graph.scatter(log_x, log_y_pointer, label="Measured data (pointer)")
+graph.plot(log_x, regression_y_pointer, label="Regression line (pointer)")
 graph.xlabel("log(Input size)")
 graph.ylabel("log(Execution time)")
-graph.title("Log-log plot of three sum with brute force Figure (2b)")
+graph.title("Log-log plot of three sum with brute/pointer Figure (2b)")
 
 graph.legend()
 graph.grid()
