@@ -40,7 +40,10 @@ print("--- Time test ---")
 brute_times_first_run = run_experiment(three_sum.threesum_brute)
 brute_times_second_run = run_experiment(three_sum.threesum_brute)
 brute_times_third_run = run_experiment(three_sum.threesum_brute)
-print("Test for print", brute_times_first_run)
+
+pointer_times_first_run = run_experiment(three_sum.threesum_pointer)
+pointer_times_second_run = run_experiment(three_sum.threesum_pointer)
+pointer_times_third_run = run_experiment(three_sum.threesum_pointer)
 
 
 def calculate_average_time(run_one, run_two, run_three):
@@ -52,38 +55,49 @@ def calculate_average_time(run_one, run_two, run_three):
     return average_times
 
 
-average_times_all_runs = calculate_average_time(
+average_times_all_brute_runs = calculate_average_time(
     brute_times_first_run,
     brute_times_second_run,
     brute_times_third_run
 
 )
+average_times_all_pointer_runs = calculate_average_time(
+    pointer_times_first_run,
+    pointer_times_second_run,
+    pointer_times_third_run
 
-print(average_times_all_runs)
+)
+
+print(average_times_all_brute_runs)
+print(average_times_all_pointer_runs)
 
 
 
 
-graph.plot(list_sizes, average_times_all_runs, label="Average time")
+graph.plot(list_sizes, average_times_all_brute_runs, label="Average time (Brute)")
+graph.plot(list_sizes, average_times_all_pointer_runs, label="Average time (Pointer)")
 
 
 graph.xlabel("Input size")
 graph.ylabel("Time (seconds)")
-graph.title("Three_sum brute force")
+graph.title("Three_sum brute/pointer average time (Figure 1a)")
 graph.legend()
 
 graph.show()
 
 
 
-graph.plot(list_sizes, brute_times_first_run, label="Run 1")
-graph.plot(list_sizes, brute_times_second_run, label="Run 2")
-graph.plot(list_sizes, brute_times_third_run, label="Run 3")
+graph.plot(list_sizes, brute_times_first_run, label="Brute Run 1")
+graph.plot(list_sizes, brute_times_second_run, label="Brute Run 2")
+graph.plot(list_sizes, brute_times_third_run, label="Brute Run 3")
+graph.plot(list_sizes, pointer_times_first_run, label="Pointer Run 1")
+graph.plot(list_sizes, pointer_times_second_run, label="Pointer Run 2")
+graph.plot(list_sizes, pointer_times_third_run, label="Pointer Run 3")
 
 
 graph.xlabel("Input size")
 graph.ylabel("Time (seconds)")
-graph.title("Three_sum brute force")
+graph.title("Three_sum brute/pointer three runs each (Figure 1)")
 graph.legend()
 
 graph.show()
@@ -190,7 +204,7 @@ graph.scatter(log_x, log_y, label="Measured data")
 graph.plot(log_x, regression_y, label="Regression line")
 graph.xlabel("log(Input size)")
 graph.ylabel("log(Execution time)")
-graph.title("Log-log plot of three sum with brute force")
+graph.title("Log-log plot of three sum with brute force Figure (2b)")
 
 graph.legend()
 graph.grid()
