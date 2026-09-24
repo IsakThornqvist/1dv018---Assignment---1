@@ -89,3 +89,84 @@ graph.legend()
 graph.grid()
 
 graph.show()
+
+
+def lin_reg(x, y):
+    input_length = len(x)
+    sum_of_all_values_in_x = sum(x)
+    sum_of_all_values_in_y = sum(y)
+
+    times_itself = 0
+
+    for i in range(0, len(x)):
+        times_itself += x[i] * x[i]
+
+    total_of_x_times_y = 0
+
+    for i in range(0, len(y)):
+        total_of_x_times_y += x[i] * y[i]
+
+    numerator = (
+        input_length * total_of_x_times_y
+        - sum_of_all_values_in_x * sum_of_all_values_in_y
+    )
+
+    denominator = (
+        input_length * times_itself
+        - sum_of_all_values_in_x * sum_of_all_values_in_x
+    )
+
+    k = numerator / denominator
+
+    average_of_x = sum_of_all_values_in_x / input_length
+    average_of_y = sum_of_all_values_in_y / input_length
+
+    m = average_of_y - k * average_of_x
+
+    return m, k
+
+
+def calculate_logarithms(numbers):
+    result = []
+    for i in range(0, len(numbers)):
+        result.append(math.log(numbers[i]))
+
+    return result
+
+
+def calculate_regression_line(x, m, k):
+    regression_y = []
+    for i in range(0, len(x)):
+        regression_y.append(m + k *x[i])
+
+    return regression_y
+
+
+log_x = calculate_logarithms(list_sizes)
+log_y_selection = calculate_logarithms(average_times_selection)
+log_y_bubble = calculate_logarithms(average_times_bubble)
+log_y_insertion = calculate_logarithms(average_times_insertion)
+
+m_selection, k_selection = lin_reg(log_x, log_y_selection)
+m_bubble, k_bubble = lin_reg(log_x, log_y_bubble)
+m_insertion, k_insertion = lin_reg(log_x, log_y_insertion)
+
+regression_y_selection = calculate_regression_line(log_x, m_selection, k_selection)
+regression_y_bubble = calculate_regression_line(log_x, m_bubble, k_bubble)
+regression_y_insertion = calculate_regression_line(log_x, m_insertion, k_insertion)
+
+
+graph.scatter(log_x, log_y_selection, label="Measured data (selection)")
+graph.plot(log_x, regression_y_selection, label=f"Regression line (selection), k = {k_selection:.3f}")
+graph.scatter(log_x, log_y_bubble, label="Measured data (bubble)")
+graph.plot(log_x, regression_y_bubble, label=f"Regression line (bubble), k = {k_bubble:.3f}")
+graph.scatter(log_x, log_y_insertion, label="Measured data (insertion)")
+graph.plot(log_x, regression_y_insertion, label=f"Regression line (insertion), k = {k_insertion:.3f}")
+graph.xlabel("Log(Input size)")
+graph.ylabel("Log(Execution time)")
+graph.title("Log-log plots for O(n^2) algorithms")
+
+graph.legend()
+graph.grid()
+
+graph.show()
