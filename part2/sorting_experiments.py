@@ -170,3 +170,37 @@ graph.legend()
 graph.grid()
 
 graph.show()
+
+
+merge_sort_first_run = run_experiment(sorting_algorithms.merge_sort)
+merge_sort_second_run = run_experiment(sorting_algorithms.merge_sort)
+merge_sort_third_run = run_experiment(sorting_algorithms.merge_sort)
+
+average_times_merge = calculate_average_time(merge_sort_first_run, merge_sort_second_run, merge_sort_third_run)
+
+
+
+graph.plot(list_sizes, average_times_merge, label="Average time (Merge)", linestyle="None", marker="x")
+
+graph.xlabel("list sizes in range 2000 to 9000")
+graph.ylabel("Average time of runs: Time (seconds)")
+graph.title("Running times for O(n * log(n)) algorithms")
+graph.legend()
+graph.grid()
+
+graph.show()
+
+
+
+print(sorting_algorithms.merge_sort([]))
+print(sorting_algorithms.merge_sort([6]))
+
+
+
+
+test = [8, 3, 5, 1, 9, 2]
+
+result = sorting_algorithms.merge_sort(test)
+
+print(result)
+print(test)
