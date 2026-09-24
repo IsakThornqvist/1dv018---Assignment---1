@@ -1,7 +1,8 @@
 list_for_test = [9, 1, 8, 6, 5, 3, 4, 6, 10, 2, 7,]
 
-class SortingAlgortihms:
-    def selection_sort(lst):
+class SortingAlgorithms:
+    
+    def selection_sort(self, lst):
         copy_of_list = lst.copy()
 
         for i in range(0, len(copy_of_list)):
@@ -13,10 +14,9 @@ class SortingAlgortihms:
 
         return copy_of_list
 
-    print(selection_sort(list_for_test))
 
 
-    def bubble_sort(lst):
+    def bubble_sort(self, lst):
         copy_of_list = lst.copy()
 
         for i in range(0, len(copy_of_list) -1):
@@ -25,10 +25,9 @@ class SortingAlgortihms:
                     copy_of_list[j], copy_of_list[j + 1] = copy_of_list[j + 1], copy_of_list[j]
         return copy_of_list
 
-    print(bubble_sort(list_for_test))
 
 
-    def insertion_sort(lst):
+    def insertion_sort(self, lst):
         copy_of_list = lst.copy()
 
         for i in range(1, len(copy_of_list)):
@@ -45,5 +44,3 @@ class SortingAlgortihms:
 
         return copy_of_list
 
-    print(insertion_sort(list_for_test))
-    print(list_for_test)
