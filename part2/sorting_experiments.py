@@ -1,0 +1,3 @@
+from sorting_algorithms import SortingAlgortihms
+
+sorting_algorithms = SortingAlgortihms
