@@ -79,16 +79,16 @@ The time complexity on the other hand, I use linear regression on the log-log da
 The results shows that as expected the execution time increases as the input size gets bigger for all three algorithms.
 
 For an input size of 9000 I got the following results.
-**Selection Sort** Average time = 1.376s
-**Bubble Sort** Average time = 5.069s
-**Insertion Sort** Average time = 1.455s
+- **Selection Sort** Average time = 1.376s
+- **Bubble Sort** Average time = 5.069s
+- **Insertion Sort** Average time = 1.455s
 
 In my experiments bubble sort was alot slower than the selection and insertion sort while the other two end up really close to eachother in execution time. From the examples I looked at to compare with it seems like the bubble sort is slower than the other two but I did not expect such a big diffrence. If I had more time Iwould like to revisit the bubble sort algorithm and see if I could have done it in a better and faster way.
 
 When it comes to the log.log regression I got the following results.
-**Selection Sort** K = 1.840
-**Bubble Sort** K = 2.014
-**Insertion Sort** K = 2.020
+- **Selection Sort** K = 1.840
+- **Bubble Sort** K = 2.014
+- **Insertion Sort** K = 2.020
 
 For this comparison bubble sort and inserion sort and relly close to 2 while selection sort comes in about 0.200 below that. These results still supports the quadratic growth and the expected `O(n²)` time complexity for all three of the algorithms.
 
