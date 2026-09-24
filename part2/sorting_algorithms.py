@@ -44,3 +44,38 @@ class SortingAlgorithms:
 
         return copy_of_list
 
+    def merge_sort(self, lst):
+        copy_of_list = lst.copy()
+
+        if len(copy_of_list) <= 1:
+            return copy_of_list
+
+        middle = len(copy_of_list) // 2
+        left = copy_of_list[:middle]
+        right = copy_of_list[middle:]
+
+        left = self.merge_sort(left)
+        right = self.merge_sort(right)
+
+        sorted_list = []
+
+        i, j = 0, 0
+
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                sorted_list += [left[i]]
+                i += 1
+            else:
+                sorted_list += [right[j]]
+                j += 1
+
+        while i < len(left):
+            sorted_list += [left[i]]
+            i += 1
+
+        while j < len(right):
+            sorted_list +=[right[j]]
+            j += 1
+
+        return sorted_list
+
