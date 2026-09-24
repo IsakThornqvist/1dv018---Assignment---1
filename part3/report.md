@@ -67,7 +67,58 @@ The results gotten from the experiments therefor supports and agrees with the th
 ## Part 2
 
 
-### 1. Explain how you conducted your experiments.
-### 2. Explain your results and comparisons.
-### 3. Show how you mathematically arrived at your results.
-### 4. Explain (in an appropriate manner) how each type of sorting algorithm works
+### 2.1 Explain how you conducted your experiments (selection, bubble, insertion).
+For the selection, bubble and insertion algorithms all three methods uses a copy of the list via `copy_of_list = lst.copy()` to make sure that the original list stayed untouched.
+
+For the lists thenselves I generated random list with input sizes ranging from 2000 to 9000 elements. All three algorithms uses the same lists to make the sorting is even for all algorithms. I execute each of the algorithms three times and then take the average of the three runs and basically calculate the average of all three runs. The result is then used in the performance comparison between the three algorithms, similar to how I did it in part-1 with the threesum algorithms.
+
+The time complexity on the other hand, I use linear regression on the log-log data. And to check the time conplexity I calculate the natural logarithm for the average run time and input size and then the slope K of the regression line is used to estimate the time complexity itself.
+
+
+### 2.2. Explain your results and comparisons (selection, bubble, insertion).
+The results shows that as expected the execution time increases as the input size gets bigger for all three algorithms.
+
+For an input size of 9000 I got the following results.
+**Selection Sort** Average time = 1.376s
+**Bubble Sort** Average time = 5.069s
+**Insertion Sort** Average time = 1.455s
+
+In my experiments bubble sort was alot slower than the selection and insertion sort while the other two end up really close to eachother in execution time. From the examples I looked at to compare with it seems like the bubble sort is slower than the other two but I did not expect such a big diffrence. If I had more time Iwould like to revisit the bubble sort algorithm and see if I could have done it in a better and faster way.
+
+When it comes to the log.log regression I got the following results.
+**Selection Sort** K = 1.840
+**Bubble Sort** K = 2.014
+**Insertion Sort** K = 2.020
+
+For this comparison bubble sort and inserion sort and relly close to 2 while selection sort comes in about 0.200 below that. These results still supports the quadratic growth and the expected `O(n²)` time complexity for all three of the algorithms.
+
+
+## Selection, Bubble, Insertion - Average execution time
+ ![Selection, Bubble, Insetion - graph](../graphs/selection_bubble_insertion.png)
+
+
+ ## Selection, Bubble, Insertion - Time complexity
+ ![Selection, Bubble, Insetion - graph2](../graphs/selection_bubble_insertion2.png)
+
+ ### 2.3 Explain how you conducted your experiments (merge, quick).
+
+ ### 2.4. Explain your results and comparisons (merge, quick).
+
+
+### 2,5. Show how you mathematically arrived at your results.
+To get the estimated time complexity represented by K I first take the input sizes and the average execution time form my other experiment. Then I calculate the natural logarithm of both the input size and average execution time.
+
+ These logarathmic values are then ises in a linnear regression which then gives the K value whuch I use to save and estimate the how fast the execution time grows when the input size increases. With a value of K close to two as mentioned above means that the execution time grows quadratically with the input size. 
+
+So to sum it up, overall the calculated values and results support the sought after time complexity of `O(n²)`.
+
+### 2.6. Explain (in an appropriate manner) how each type of sorting algorithm works
+
+### Selection Sort
+Selection sort splits the list into a sorted part and an unsorted part. Then in each step it finds the smallest element in the unsorted part of the list and swaps it with the element at the start of the unsorted list. The sorted part of the list grows by one element each run until the entire list has been sorted.
+
+### Bubble Sort
+Bubble sort works with neighbours, it goes through the list and compairs each pair of neighbours. If a pair then is in the wrong order, the two elements go on to swap places. After one full run, the largest element has moved/bubbled to last position in the list. The algorithm then repeats this proccess until the list is sorted.
+
+### Insertion Sort
+Insertion sort works sort of like sorting cards/elements one at a time. It takes the next element and compares it with the already sorted elements and shifts the larger elements to the right until they are in the correct spot. Then it inserts the element there.
