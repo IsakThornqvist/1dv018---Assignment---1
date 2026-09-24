@@ -79,3 +79,31 @@ class SortingAlgorithms:
 
         return sorted_list
 
+
+    def quick_sort(self, lst):
+        copy_of_list = lst.copy()
+
+        if len(copy_of_list) <= 1:
+            return copy_of_list
+
+        pivot = copy_of_list[0]
+
+        left = []
+        right = []
+
+        for i in range(1, len(copy_of_list)):
+            value = copy_of_list[i]
+
+            if value <= pivot:
+                left += [value]
+            else:
+                right += [value]
+
+        sorted_left = self.quick_sort(left)
+        sorted_right = self.quick_sort(right)
+
+        result = sorted_left + [pivot] + sorted_right
+
+        return result
+
+        
