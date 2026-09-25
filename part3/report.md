@@ -144,7 +144,7 @@ In my case the merge sort had a longer execution time for 8000 than 9000 on cert
 When it comes to how these four algorithms scale with input sizes the data is interesting. First of all merge and quick sort use divide and conquer approach to allow them to handle large lists in an effective way. The radix and bucket sort on the other hand uses a different approach that make them really fast when the input size increases.
 
 The log-log regression gave these K values:
-- **Merge Sort** K = 1.1316
+- **Merge Sort** K = 1.316
 - **Quick Sort** K = 0.975
 - **Bucket Sort** K = 0.933
 - **Radix Sort** K = 0.977
