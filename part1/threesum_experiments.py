@@ -2,7 +2,7 @@ import random
 import time
 import math
 import matplotlib.pyplot as graph
-from threesum_algorithms import ThreeSum
+from part1.threesum_algorithms import ThreeSum
 
 three_sum = ThreeSum()
 
