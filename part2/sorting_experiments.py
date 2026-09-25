@@ -1,4 +1,4 @@
-from sorting_algorithms import SortingAlgorithms
+from part2.sorting_algorithms import SortingAlgorithms
 import random
 import time
 import math
@@ -156,11 +156,11 @@ regression_y_bubble = calculate_regression_line(log_x, m_bubble, k_bubble)
 regression_y_insertion = calculate_regression_line(log_x, m_insertion, k_insertion)
 
 
-graph.scatter(log_x, log_y_selection, label="Measured data (selection)")
+graph.scatter(log_x, log_y_selection)
 graph.plot(log_x, regression_y_selection, label=f"Regression line (selection), k = {k_selection:.3f}")
-graph.scatter(log_x, log_y_bubble, label="Measured data (bubble)")
+graph.scatter(log_x, log_y_bubble)
 graph.plot(log_x, regression_y_bubble, label=f"Regression line (bubble), k = {k_bubble:.3f}")
-graph.scatter(log_x, log_y_insertion, label="Measured data (insertion)")
+graph.scatter(log_x, log_y_insertion)
 graph.plot(log_x, regression_y_insertion, label=f"Regression line (insertion), k = {k_insertion:.3f}")
 graph.xlabel("Log(Input size)")
 graph.ylabel("Log(Execution time)")
@@ -190,11 +190,57 @@ bucket_sort_third_run = run_experiment(sorting_algorithms.bucket_sort)
 
 average_times_bucket = calculate_average_time(bucket_sort_first_run, bucket_sort_second_run, bucket_sort_third_run)
 
+radix_sort_first_run = run_experiment(sorting_algorithms.radix_sort)
+radix_sort_second_run = run_experiment(sorting_algorithms.radix_sort)
+radix_sort_third_run = run_experiment(sorting_algorithms.radix_sort)
+
+average_times_radix = calculate_average_time(radix_sort_first_run, radix_sort_second_run, radix_sort_third_run)
+
+log_x = calculate_logarithms(list_sizes)
+log_y_merge = calculate_logarithms(average_times_merge)
+log_y_quick = calculate_logarithms(average_times_quick)
+log_y_bucket = calculate_logarithms(average_times_bucket)
+log_y_radix = calculate_logarithms(average_times_radix)
+
+m_merge, k_merge = lin_reg(log_x, log_y_merge)
+m_quick, k_quick = lin_reg(log_x, log_y_quick)
+m_bucket, k_bucket = lin_reg(log_x, log_y_bucket)
+m_radix, k_radix = lin_reg(log_x, log_y_radix)
+
+regression_y_merge = calculate_regression_line(log_x, m_merge, k_merge)
+regression_y_quick = calculate_regression_line(log_x, m_quick, k_quick)
+regression_y_bucket = calculate_regression_line(log_x, m_bucket, k_bucket)
+regression_y_radix = calculate_regression_line(log_x, m_radix, k_radix)
+
+graph.scatter(log_x, log_y_merge)
+graph.plot(log_x, regression_y_merge, label=f"Regression line (merge), k = {k_merge:.3f}")
+graph.scatter(log_x, log_y_quick)
+graph.plot(log_x, regression_y_quick, label=f"Regression line (quick), k = {k_quick:.3f}")
+graph.scatter(log_x, log_y_bucket)
+graph.plot(log_x, regression_y_bucket, label=f"Regression line (bucket), k = {k_bucket:.3f}")
+graph.scatter(log_x, log_y_radix)
+graph.plot(log_x, regression_y_radix, label=f"Regression line (radix), k = {k_radix:.3f}")
+graph.xlabel("Log(Input size)")
+graph.ylabel("Log(Execution time)")
+graph.title("Log-log plots for merge, quick, bucket and radix sort algorithms")
+
+graph.legend()
+graph.grid()
+
+graph.show()
+
+print("K values:")
+print("Merge Sort:", k_merge)
+print("Quick Sort:", k_quick)
+print("Bucket Sort:", k_bucket)
+print("Radix Sort:", k_radix)
+
 
 
 graph.plot(list_sizes, average_times_merge, label="Average time (Merge)", linestyle="None", marker="x")
 graph.plot(list_sizes, average_times_quick, label="Average time (Quick)", linestyle="None", marker="*")
 graph.plot(list_sizes, average_times_bucket, label="Average time (Bucket)", linestyle="None", marker="o")
+graph.plot(list_sizes, average_times_radix, label="Average time (Radix)", linestyle="None", marker="s")
 
 graph.xlabel("list sizes in range 2000 to 9000")
 graph.ylabel("Average time of runs: Time (seconds)")
@@ -204,9 +250,17 @@ graph.grid()
 
 graph.show()
 
-test_list = [5, 2, 8, 1, 9]
+test_list = [-5, 2, -8, -1, 9]
 
 result = sorting_algorithms.bucket_sort(test_list)
+
+print(result)
+print(test_list)
+
+
+test_list = [5, -8, 2, -1, 9]
+
+result = sorting_algorithms.radix_sort(test_list)
 
 print(result)
 print(test_list)
