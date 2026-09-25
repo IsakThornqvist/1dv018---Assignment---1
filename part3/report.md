@@ -61,8 +61,26 @@ Th slope (k) can be used to estimate the time complexity, the brute force algort
 The results gotten from the experiments therefor supports and agrees with the theoretical time complexitiers of both brute and piinter algorithms. The result also helps us understand why the execution times between the algorithms are so different in both Figure 1 and Figure 1a. So to sum it up, when the input size increases the brute force algorithm becomes much slower while the pointer algorithm keeps most of its speed.
 
 ### 4. Show how you mathematically arrived at your results.
-### 5. Explain (in an appropriate manner) how your choice of cache or pointer works.
+To get the estimated time complexity which is represented by K I first took the input sizes to het the average execution time from the experiments. Then the natural logarithm for both average execution time and input size was made calculated.
 
+These logarithmic values are then used in a linear regression whick gives the k value, k is used to estimate how quickly execution time grows when input size expands. A value close to three means cubic growth or there abouts while a value closer to two means quadratic groth or there abouts.
+
+For the brute force algorithm the value of K I got is:
+
+- k = 3.1023
+
+For the pointer algorithm the value of k I got is:
+
+- k = 2.0913
+
+These results indicate that the experimental results supports the time complexities expected which are O(n³) for brute force and O(n²) for pointer.
+
+### 5. Explain (in an appropriate manner) how your choice of cache or pointer works.
+My `threesum_pointer method` first sorts the list. Then it uses three things basically, one fixed element aswell as two pointers. The right pointer starts at the end of gthe lsit while the left starts directly after the fixed element. The variable `current_sum` is used and compared with the target which in this case is `sum =0`, this comparison makes it so that the algorithm can decide which pointer should be moving.
+
+If the `current_sum` is to small that means the left pointer moves to the right to increase the `curren_sum` and if the `current_sum` too big the right pointer moves to the left to decrease the value and try to find a match with the target we are looking for. Then the third scenario is that if we find a match and `current_sum` == `sum` the combination of bumbers is added to the result.
+
+The main benefit with this approach is that it avoids alot of uneccessary and impossible combinations and because of that the algortihm works faster than the brute force approach which basically checks every possible combination and by doing that "waste" time.
 
 ## Part 2
 
@@ -100,9 +118,10 @@ For this comparison bubble sort and inserion sort and relly close to 2 while sel
  ## Selection, Bubble, Insertion - Time complexity
  ![Selection, Bubble, Insetion - graph2](../graphs/selection_bubble_insertion2.png)
 
- ### 2.3 Explain how you conducted your experiments (merge, quick).
+ ### 2.3 Explain how you conducted your experiments (merge, quick, bucket, radix).
 
- ### 2.4. Explain your results and comparisons (merge, quick).
+
+ ### 2.4. Explain your results and comparisons (merge, quick, bucket, radix).
 
 
 ### 2,5. Show how you mathematically arrived at your results.
@@ -122,3 +141,11 @@ Bubble sort works with neighbours, it goes through the list and compairs each pa
 
 ### Insertion Sort
 Insertion sort works sort of like sorting cards/elements one at a time. It takes the next element and compares it with the already sorted elements and shifts the larger elements to the right until they are in the correct spot. Then it inserts the element there.
+
+### Merge Sort
+
+### Quick Sort
+
+### Bucket Sort
+
+### Radix Sort
