@@ -6,6 +6,8 @@ import matplotlib.pyplot as graph
 
 sorting_algorithms = SortingAlgorithms()
 
+print("Currently running sorting experiments")
+
 list_sizes = [2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000]
 
 def generate_random_list(n):
@@ -229,14 +231,6 @@ graph.grid()
 
 graph.show()
 
-print("K values:")
-print("Merge Sort:", k_merge)
-print("Quick Sort:", k_quick)
-print("Bucket Sort:", k_bucket)
-print("Radix Sort:", k_radix)
-
-
-
 graph.plot(list_sizes, average_times_merge, label="Average time (Merge)", linestyle="None", marker="x")
 graph.plot(list_sizes, average_times_quick, label="Average time (Quick)", linestyle="None", marker="*")
 graph.plot(list_sizes, average_times_bucket, label="Average time (Bucket)", linestyle="None", marker="o")
@@ -249,18 +243,3 @@ graph.legend()
 graph.grid()
 
 graph.show()
-
-test_list = [-5, 2, -8, -1, 9]
-
-result = sorting_algorithms.bucket_sort(test_list)
-
-print(result)
-print(test_list)
-
-
-test_list = [5, -8, 2, -1, 9]
-
-result = sorting_algorithms.radix_sort(test_list)
-
-print(result)
-print(test_list)

@@ -6,6 +6,8 @@ from part1.threesum_algorithms import ThreeSum
 
 three_sum = ThreeSum()
 
+print("Currently running threesum experiments")
+
 def generate_random_list(n):
     random_list = []
 
@@ -34,8 +36,6 @@ def run_experiment(algorithm):
 
 
 list_sizes = [220, 240, 280, 300, 320, 340, 360, 380, 400, 420, 460, 500, 540, 600, 800]
-
-print("--- Time test ---")
 
 brute_times_first_run = run_experiment(three_sum.threesum_brute)
 brute_times_second_run = run_experiment(three_sum.threesum_brute)
@@ -67,11 +67,6 @@ average_times_all_pointer_runs = calculate_average_time(
     pointer_times_third_run
 
 )
-
-print(average_times_all_brute_runs)
-print(average_times_all_pointer_runs)
-
-
 
 
 graph.plot(list_sizes, average_times_all_brute_runs, label="Average time (Brute)")
@@ -115,28 +110,6 @@ result_one_pointer = three_sum.threesum_pointer(first_list)
 result_two_pointer = three_sum.threesum_pointer(second_list)
 result_three_pointer = three_sum.threesum_pointer(third_list)
 
-print("--- Correctness test ---")
-
-print("List 1")
-print("List to run algorithms on", first_list)
-print("Brute", result_one_brute)
-print("Pointer", result_one_pointer)
-
-print("List 2")
-print("List to run algorithms on", second_list)
-print("Brute", result_two_brute)
-print("Pointer", result_two_pointer)
-
-print("List 3")
-print("List to run algorithms on", third_list)
-print("Brute", result_three_brute)
-print("Pointer", result_three_pointer)
-
-
-# x input size -- -- - - -list_sizes
-# y time - - --- -- - - average_times_all_runs     execusion time
-# n = antal datapunkter
-
 def lin_reg(x, y):
     input_length = len(x)
     sum_of_all_values_in_x = sum(x)
@@ -173,9 +146,6 @@ def lin_reg(x, y):
 
 m, k = lin_reg(list_sizes, average_times_all_brute_runs)
 
-print("m: (skärningspunkt)", m)
-print("k: (lutning)", k)
-
 def calculate_logarithms(numbers):
     result = []
     for i in range(0, len(numbers)):
@@ -196,14 +166,12 @@ log_x = calculate_logarithms(list_sizes)
 log_y_brute = calculate_logarithms(average_times_all_brute_runs)
 
 m_brute, k_brute = lin_reg(log_x, log_y_brute)
-print("brute force k, log", k_brute)
 
 regression_y_brute = calculate_regression_line(log_x, m_brute, k_brute)
 
 log_y_pointer = calculate_logarithms(average_times_all_pointer_runs)
 
 m_pointer, k_pointer = lin_reg(log_x, log_y_pointer)
-print("pointer k, log", k_pointer)
 
 regression_y_pointer = calculate_regression_line(log_x, m_pointer, k_pointer)
 
