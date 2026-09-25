@@ -184,15 +184,29 @@ quick_sort_third_run = run_experiment(sorting_algorithms.quick_sort)
 
 average_times_quick = calculate_average_time(quick_sort_first_run, quick_sort_second_run, quick_sort_third_run)
 
+bucket_sort_first_run = run_experiment(sorting_algorithms.bucket_sort)
+bucket_sort_second_run = run_experiment(sorting_algorithms.bucket_sort)
+bucket_sort_third_run = run_experiment(sorting_algorithms.bucket_sort)
+
+average_times_bucket = calculate_average_time(bucket_sort_first_run, bucket_sort_second_run, bucket_sort_third_run)
+
 
 
 graph.plot(list_sizes, average_times_merge, label="Average time (Merge)", linestyle="None", marker="x")
 graph.plot(list_sizes, average_times_quick, label="Average time (Quick)", linestyle="None", marker="*")
+graph.plot(list_sizes, average_times_bucket, label="Average time (Bucket)", linestyle="None", marker="o")
 
 graph.xlabel("list sizes in range 2000 to 9000")
 graph.ylabel("Average time of runs: Time (seconds)")
-graph.title("Running times for O(n * log(n)) algorithms")
+graph.title("Running times for Merge, Quick, Bucket and Radix Sort")
 graph.legend()
 graph.grid()
 
 graph.show()
+
+test_list = [5, 2, 8, 1, 9]
+
+result = sorting_algorithms.bucket_sort(test_list)
+
+print(result)
+print(test_list)
