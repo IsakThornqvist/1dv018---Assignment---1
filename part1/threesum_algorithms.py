@@ -33,7 +33,6 @@ class ThreeSum:
                 if current_sum == sum:
                     triple = (lst[i], lst[left], lst[right])
 
-                    #if triple not in result:
                     result.append(triple)
                     left = left + 1
                     right = right - 1
@@ -46,7 +45,3 @@ class ThreeSum:
 
         return result
     
-
-# three_sum = ThreeSum()
-# result = three_sum.threesum_brute(list_for_test)
-# print(result)
