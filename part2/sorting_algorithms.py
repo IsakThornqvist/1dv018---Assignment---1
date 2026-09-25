@@ -137,4 +137,63 @@ class SortingAlgorithms:
                 result.append(value)
 
         return result
-        
+
+    def radix_sort(self, lst):
+        copy_of_list = lst.copy()
+
+        if not copy_of_list:
+            return copy_of_list
+
+        negative = []
+        positive = []
+
+        for value in copy_of_list:
+            if value < 0:
+                negative.append(-value)
+            else:
+                positive.append(value)
+
+        negative = self.radix_sort_positive(negative)
+        positive = self.radix_sort_positive(positive)
+
+        negative.reverse()
+
+        for i in range(len(negative)):
+            negative[i] = -negative[i]
+
+        return negative + positive
+
+    def radix_sort_positive(self, lst):
+        copy_of_list = lst.copy()
+
+        if not copy_of_list:
+            return copy_of_list
+
+        biggest = max(copy_of_list)
+        place = 1
+
+        while biggest // place > 0:
+            copy_of_list = self.counting_sort_by_digit(copy_of_list, place)
+            place *= 10
+
+        return copy_of_list
+
+
+    def counting_sort_by_digit(self, lst, place):
+        buckets = []
+
+        for i in range(10):
+            buckets.append([])
+
+        for value in lst:
+            index = (value // place) % 10
+            buckets[index].append(value)
+
+        result = []
+
+        for bucket in buckets:
+            for value in bucket:
+                result.append(value)
+
+        return result
+    
