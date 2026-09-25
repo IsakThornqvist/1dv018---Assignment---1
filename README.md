@@ -19,7 +19,7 @@ git clone https://github.com/IsakThornqvist/1dv018---Assignment---1.git
 ### 2. Open the assignment folder
 
 ```bash
-cd assignment-1
+cd 1dv018---Assignment---1
 ```
 
 ### 3. Install matplotlib
