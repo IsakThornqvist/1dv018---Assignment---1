@@ -150,7 +150,7 @@ The log.log regression gave these K values:
 
 The result gives all four algorithm a K value close to one, this first of all shows that these algorithms execution grows much more slowly than the quadratic algorithms from previous experiments. Bucket and radix sort results is consistent with an approximate linear behaviour we are looking for. For merge sort and quick sort the measured growth was also close to linear for the input sizes I used which I find really interesting. This does not automatically mean that their theoretical time complexity is O(n) because the K value only describes measured growth in my experiments.
 
- ![Merge, Quick, Bucket, Raidx - graph2](../graphs/rc_merge_quick_bucket_radix.png)
+ ![Merge, Quick, Bucket, Raidx - graph2](../graphs/tc_merge_quick_bucket_radix.png)
 
 
 
