@@ -106,4 +106,35 @@ class SortingAlgorithms:
 
         return result
 
+    def bucket_sort(self, lst):
+        copy_of_list = lst.copy()
+
+        if not copy_of_list:
+            return copy_of_list
+
+        bucket = []
+        smallest_value = min(copy_of_list)
+        biggest_value = max(copy_of_list)
+
+        if smallest_value == biggest_value:
+            return copy_of_list
+
+        for i in range(len(copy_of_list)):
+            bucket.append([])
+
+        for value in copy_of_list:
+            bucket_index = int((value - smallest_value) / (biggest_value - smallest_value) * (len(bucket) - 1))
+
+            bucket[bucket_index].append(value)
+
+        for current_bucket in bucket:
+            current_bucket.sort()
+
+        result = []
+
+        for current_bucket in bucket:
+            for value in current_bucket:
+                result.append(value)
+
+        return result
         
